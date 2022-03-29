@@ -1,0 +1,41 @@
+digraph LIST
+{
+    dpi = 200;
+    rankdir = LR;
+
+    subgraph LISTS
+    {
+        node [shape = record, style = "filled", fillcolor = "teal", fontcolor = "white"];
+        edge [maxlen = 2, penwidth = 1, arrowhead = "empty", weight = 1];
+
+            l_elem_fict [label = "<name> FICT | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: null", fillcolor = "darkslategray"];
+            l_elem_i [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_g [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_t [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_k [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_m [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_z [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_p [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+            l_elem_r [label = "<name> NODE: %d | <next> NEXT: %d | <prev> PREV: %d | <data> DATA: %lf"];
+
+        l_elem_fict -> l_elem_i -> l_elem_g -> l_elem_t -> l_elem_k -> l_elem_m -> l_elem_z -> l_elem_p -> l_elem_r [weight = 5, style = "invisible", arrowhead = "none"];
+
+        l_elem_i:next -> l_elem_g:name;
+        l_elem_g:next -> l_elem_t:name;
+        l_elem_t:next -> l_elem_k:name;
+        l_elem_k:next -> l_elem_m:name;
+        l_elem_m:next -> l_elem_z:name;
+        l_elem_z:next -> l_elem_p:name;
+        l_elem_p:next -> l_elem_r:name;
+
+    }
+
+    subgraph MAIN
+    {
+        node     [shape = record, width = 2, height = 2, style = "filled", fillcolor = "olive", fontcolor = "white"];
+        edge     [maxlen = 1 , penwidth = 1, arrowhead = "empty"];
+
+        main     [label = "{NAME:  %s} | {CAPACITY:  %u} | {INSERT:  %d} | {FREE:  %d} | {FICT:  %d}"];
+    }
+
+}
