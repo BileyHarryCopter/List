@@ -4,14 +4,23 @@ CSOURCES= sources/
 
 all: start clean
 
-start: List.o main.o
-	$(CC) List.o main.o -o start
+start: list.o dump.o main.o
+	$(CC) list.o dump.o main.o -o start
 
-List.o: List.c
-	$(CC) $(CFLAGS) List.c
+list.o: list.c
+	$(CC) $(CFLAGS) list.c
+
+dump.o: dump.c
+	$(CC) $(CFLAGS) dump.c
 
 main.o: main.c
 	$(CC) $(CFLAGS) main.c
+
+run:
+	./start
+
+leaks:
+	leaks -atExit -- ./start
 
 clean:
 	rm -rf *.o
