@@ -4,8 +4,8 @@ CSOURCES= sources/
 
 all: start clean
 
-start: list.o dump.o main.o
-	$(CC) list.o dump.o main.o -o start
+start: list.o main.o
+	$(CC) list.o main.o -o start
 
 list.o: list.c
 	$(CC) $(CFLAGS) list.c

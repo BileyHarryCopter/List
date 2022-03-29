@@ -17,8 +17,12 @@ int main (void)
     List_Insrt(&list_1, NEXT, 9, 13120);
     List_Insrt(&list_1, NEXT, 10, 920);
 
+    List_Delete (&list_1, 2);
+
     List_Print(list_1);
-    Graf_Dump (list_1);
+
+    Graph_Damp (list_1);
+
     List_Dtor(&list_1);
     return 0;
 }

@@ -4,7 +4,9 @@
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 int Graf_Dump (List_t list)
 {
+    assert (list.name);
     char * name_file = strcat (list.name, "_damp.dot");
+    printf ("NAME OF THE FILE: %s\n", name_file);
     assert (name_file);
     FILE * file = fopen (name_file, "w");
     if (file == NULL)
