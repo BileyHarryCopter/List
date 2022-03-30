@@ -37,6 +37,24 @@ int List_Dtor (List_t *list)
     return NO_ERROR;
 }
 
+//  slowly a little
+int logical_to_fisical (List_t *list, int log_pos)
+{
+    assert (list);
+    int phys = 0;
+    for (int i = 0; i < log_pos; i++)
+    {
+        if (list->next[phys] == 0)
+        {
+        //  ADD errors checking
+        //  soft allertion about this error with message in terminal to checkout the logfile
+            return ERROR;
+        }
+        phys = list->next[phys];
+    }
+    return phys;
+}
+
 //   extracting a list on fixed size
 int List_Resup (List_t *list)
 {
@@ -45,7 +63,6 @@ int List_Resup (List_t *list)
     list->data    = (data_t *) realloc (list->data, INCR_KOEF * (list->capacity) * sizeof(data_t));
     list->next    = (int *)    realloc (list->next, INCR_KOEF * (list->capacity) * sizeof(int));
     list->prev    = (int *)    realloc (list->prev, INCR_KOEF * (list->capacity) * sizeof(int));
-
     list->capacity *= INCR_KOEF;
 
     for (int i = size - 1; i < list->capacity; i++)
@@ -96,6 +113,25 @@ int List_Delete (List_t *list, int del_ptr)
 {
     assert (list);
 
+    if (list->prev[del_ptr] == -1)
+    {
+    //  ADD errors checking
+    //  soft allertion about this error with message in terminal to checkout the logfile
+        return ERROR;
+    }
+    if (list->insertion == 0)
+    {
+    //  ADD errors checking
+    //  soft allertion about this error with message in terminal to checkout the logfile
+        return ERROR;
+    }
+    if (del_ptr == 0)
+    {
+    //  ADD errors checking
+    //  soft allertion about this error with message in terminal to checkout the logfile
+        return ERROR;
+    }
+
     list->data[del_ptr]             = 0;
     list->next[list->prev[del_ptr]] = list->next[del_ptr];
     list->prev[list->next[del_ptr]] = list->prev[del_ptr];
@@ -122,4 +158,35 @@ void List_Print (List_t list)
         printf("CAPACITY: %u\n", list.capacity);
         printf("---------\n\n\n");
     }
+}
+
+//  very slowly
+int List_Linearisation (List_t *list)
+{
+    assert (list);
+    int phys = 0;
+    data_t * new_mass = (data_t *) calloc (list->capacity, sizeof (data_t));
+    if (list->insertion == 0)
+    {
+    //  ADD errors checking
+    //  soft allertion about this error with message in terminal to checkout the logfile
+        return ERROR;
+    }
+
+    for (int i = 0; i < list->insertion; i++)
+    {
+        phys        = list->next[phys];
+        printf ("data[phys] = %lf\n", list->data[phys]);
+        new_mass[i] = list->data[phys];
+    }
+
+    for (int i = 0; i < list->insertion; i++)
+    {
+        printf ("%f ", new_mass[i]);
+    }
+    printf ("\n");
+
+
+    free (new_mass);
+    return NO_ERROR;
 }

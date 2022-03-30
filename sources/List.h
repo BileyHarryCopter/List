@@ -8,6 +8,7 @@
 #define INITSIZE  10
 #define CRIT_KOEF 0.6
 #define INCR_KOEF 2
+#define FLEXSIZE 1000
 
 enum errors {
   NO_ERROR = 0,
@@ -45,7 +46,9 @@ int List_Ctor(List_t *list, const char * name_list);
 int List_Resup(List_t *list);
 int List_Delete(List_t *list, int del_ptr);
 int List_Insrt(List_t *list, int mode, int insrt_ptr, data_t insrt_val);
-int Graph_Damp (List_t list);
+int Graph_Dump (List_t list);
 void List_Print(List_t list);
+int logical_to_fisical (List_t *list, int log_pos);
+int List_Linearisation (List_t *list);
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//

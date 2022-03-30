@@ -2,16 +2,29 @@
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
                         //  REALISATION OF DUMPING  //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-int Graph_Damp (List_t list)
+char * System_Dump (List_t list, char * name_file)
+{
+    char * Fname = (char *) calloc (FLEXSIZE, sizeof (char));
+    strcat (Fname, "dot ");
+    strcat (Fname, name_file);
+    strcat (Fname, " -T png -o ");
+    strcat (Fname, list.name);
+    strcat (Fname, "_dump.png");
+
+    return Fname;
+}
+
+int Graph_Dump (List_t list)
 {
     assert (list.name);
     char name_file [2*NAMESIZE];
     strcpy (name_file, list.name);
-    strcat  (name_file, "_damp.dot");
+    strcat  (name_file, "_dump.dot");
     assert (name_file);
     FILE * file = fopen (name_file, "w");
     if (file == NULL)
         return DAMP_ERROR;
+
 //  hard damping
     fseek (file, 0L, SEEK_SET);
     fprintf (file,
@@ -38,19 +51,22 @@ int Graph_Damp (List_t list)
     }
     fprintf (file, " [weight = 5, style = \"invisible\", arrowhead = \"none\", dir = \"forward\"];\n\n");
 
-    for (int i = 0; i < list.capacity; i++)
+    if (list.insertion != 0)
     {
-        if (i == 0)
+        for (int i = 0; i < list.capacity; i++)
         {
+            if (i == 0)
+            {
+                fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.next[i]);
+                fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.prev[i]);
+                continue;
+            }
+            else if (list.prev[i] == -1 || list.next[i] == 0)
+                continue;
             fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.next[i]);
-            fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.prev[i]);
-            continue;
         }
-        if (list.prev[i] == -1 || list.next[i] == 0)
-            continue;
-        fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.next[i]);
-
     }
+
     fprintf (file, "\t\t}\n\n");
 
     fprintf (file,
@@ -62,7 +78,21 @@ int Graph_Damp (List_t list)
             "\t}\n\n",
             list.name, list.capacity, list.insertion, list.free, list.fict);
 
+    fprintf (file,
+            "\tsubgraph MAIN\n"
+            "\t{\n"
+            "\t\tnode 	[shape = ellipse, style = \"filled\", fillcolor = \"greenyellow\", fontcolor = \"black\"];\n"
+            "\t\ttitle 	[label = \"Graphic Dump\"];\n"
+            "\t}\n\n");
+
     fprintf (file, "}\n");
+
+// TODO: nothing works
+// why???
+    char * comdump = System_Dump (list, name_file);
+    printf ("FILE NAME: %s\n", comdump);
+    system (comdump);
+    free (comdump);
 
     fclose (file);
     return NO_ERROR;
