@@ -18,6 +18,7 @@ int main (void)
     List_Insrt(&list_1, NEXT, 10, 920);
 
     List_Delete (&list_1, 2);
+    List_Insrt(&list_1, NEXT, 2, 30);
 
     List_Print(list_1);
 
