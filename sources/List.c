@@ -38,7 +38,7 @@ int List_Dtor (List_t *list)
 }
 
 //  slowly a little
-int logical_to_fisical (List_t *list, int log_pos)
+int Log_to_Phys (List_t *list, int log_pos)
 {
     assert (list);
     int phys = 0;
@@ -164,8 +164,11 @@ void List_Print (List_t list)
 int List_Linearisation (List_t *list)
 {
     assert (list);
-    int phys = 0;
+    int first = 0;
+    int second = 0;
+    int insert = list->insertion;
     data_t * new_mass = (data_t *) calloc (list->capacity, sizeof (data_t));
+
     if (list->insertion == 0)
     {
     //  ADD errors checking
@@ -173,19 +176,32 @@ int List_Linearisation (List_t *list)
         return ERROR;
     }
 
-    for (int i = 0; i < list->insertion; i++)
+    first = list->next[first];
+    for (int i = 0; i < insert; i++)
     {
-        phys        = list->next[phys];
-        printf ("data[phys] = %lf\n", list->data[phys]);
-        new_mass[i] = list->data[phys];
+        second = first;
+        first = list->next[second];
+        new_mass[i] = list->data[second];
+        List_Delete (list, second);
+        if (first == 0)
+            break;
     }
 
-    for (int i = 0; i < list->insertion; i++)
+//  updating data of the list
+    list->free = 1;
+    for (int i = 1; i < list->capacity - 1; i++)
     {
-        printf ("%f ", new_mass[i]);
+        list->next[i] = i + 1;
+        list->prev[i] = -1;
     }
-    printf ("\n");
+    list->next[list->capacity - 1] = 0;
+    list->prev[list->capacity - 1] = -1;
 
+
+    for (int i = 0; i < insert; i++)
+    {
+        List_Insrt (list, NEXT, i, new_mass[i]);
+    }
 
     free (new_mass);
     return NO_ERROR;
