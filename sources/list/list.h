@@ -1,3 +1,6 @@
+#ifndef LIST
+#define LIST
+
 #include <assert.h>
 #include <ctype.h>
 #include <math.h>
@@ -27,28 +30,22 @@ enum sizes {
 };
 
 typedef double data_t;
+typedef struct List_t List_t;
 
-typedef struct {
-  data_t      *data;
-  int         *next;
-  int         *prev;
-  char        *name;
-  unsigned     capacity;
-  int          fict;
-  int          free;
-  int          insertion;
-  FILE *       dampfile;
-} List_t;
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-int List_Dtor(List_t *list);
-int List_Ctor(List_t *list, char * name_list);
-int List_Resup(List_t *list);
-int List_Delete(List_t *list, int del_ptr);
-int List_Insrt(List_t *list, int mode, int insrt_ptr, data_t insrt_val);
-int Graph_Dump (List_t list);
-void List_Print(List_t list);
-int Log_to_Phys (List_t *list, int log_pos);
-int List_Linearisation (List_t *list);
+List_t *ListCtor      (char * name_list);
+int ListDtor          (List_t *list);
+int ListResup         (List_t *list);
+int ListDelete        (List_t *list, int del_ptr);
+int ListInsrt         (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
+int GraphDump         (List_t *list);
+int LogToPhys         (List_t *list, int log_pos);
+int PhysToLog         (List_t *list, int phys_pos);
+int ListLinearisation (List_t *list);
+
+void ListPrint        (List_t list);
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+
+#endif
