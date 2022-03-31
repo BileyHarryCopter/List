@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-c -Wall # -Werror -Wextra
+CFLAGS=-c #-Wall # -Werror -Wextra
 LISTSRC= sources/list
 DUMPSRC= sources/dump
 
