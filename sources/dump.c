@@ -30,7 +30,7 @@ int Graph_Dump (List_t list)
     fprintf (file,
             "digraph LIST\n"
             "{\n"
-            "\tgraph [dpi = 200, splines = ortho, nodesep = 1];\n"
+            "\tgraph [dpi = 200, nodesep = 1];\n"
             "\trankdir = LR;\n\n"
             "\tsubgraph LISTS\n"
             "\t{\n"
@@ -58,11 +58,16 @@ int Graph_Dump (List_t list)
             if (i == 0)
             {
                 fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.next[i]);
-                fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.prev[i]);
+                fprintf (file, "\t\tl_elem_%d:ne -> l_elem_%d:nw;\n", i, list.prev[i]);
                 continue;
             }
             else if (list.prev[i] == -1 || list.next[i] == 0)
                 continue;
+            if (list.next[i] < i)
+            {
+                fprintf (file, "\t\tl_elem_%d:nw -> l_elem_%d:ne;\n", i, list.next[i]);
+                continue;
+            }
             fprintf (file, "\t\tl_elem_%d:se -> l_elem_%d:sw;\n", i, list.next[i]);
         }
     }
@@ -81,7 +86,7 @@ int Graph_Dump (List_t list)
     fprintf (file,
             "\tsubgraph MAIN\n"
             "\t{\n"
-            "\t\tnode 	[shape = ellipse, style = \"filled\", fillcolor = \"greenyellow\", fontcolor = \"black\"];\n"
+            "\t\tnode 	[shape = ellipse, height = 1, style = \"filled\", fillcolor = \"greenyellow\", fontcolor = \"black\"];\n"
             "\t\ttitle 	[label = \"Graphic Dump\"];\n"
             "\t}\n\n");
 
