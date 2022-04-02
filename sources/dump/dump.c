@@ -1,4 +1,5 @@
 #include "dump.h"
+#include "../includes/err_ass.h"
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
                         //  REALISATION OF DUMPING  //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
@@ -38,7 +39,7 @@ int GraphDump (List_t *list)
     FILE * file = fopen (name_file, "w");
     assert (file);
     if (file == NULL)
-        return DUMP_ERROR;
+        return DOT_ERROR;
 
 //  hard damping
     fseek (file, 0L, SEEK_SET);
@@ -99,7 +100,7 @@ int GraphDump (List_t *list)
             list->name, list->capacity, list->insertion, list->free, list->fict);
 
     fprintf (file,
-            "\tsubgraph MAIN\n"
+            "\tsubgraph TITLE\n"
             "\t{\n"
             "\t\tnode 	[shape = ellipse, height = 1, style = \"filled\", fillcolor = \"greenyellow\", fontcolor = \"black\"];\n"
             "\t\ttitle 	[label = \"Graphic Dump\"];\n"
