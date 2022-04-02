@@ -1,19 +1,15 @@
-//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+#include "../includes/standarts.h"
 
-#define logassert(expresion, file, func, numb_er, name_er, list)    \
-{                                                                   \
-    if (!expression)                                                \
-    {                                                               \
-        LogAssert (expresion, file, func, numb_er, name_er, list);  \
-        ListDtor (list);                                            \
-        exit (EXIT_FAILURE);                                        \
-    }                                                               \
+//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+#define logassert(express, file, func, numb_error, name_list)                  \
+{                                                                              \
+    if (!(express))                                                            \
+    {                                                                          \
+        return LogAssert (func, numb_error, name_list);                        \
+    }                                                                          \
 }
-
-#include "../includes/errors.h"
-
-int LogDump   (const char * name_func, const int numb,     const char * name, List_t *list);
-int LogAssert (bool expression,        const char * name_func,
-                                       const int numb,
-                                       const char * name, List_t *list);
+//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+//===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+int LogDump   (const char * name_func, const int numb, const char * name_list);
+int LogAssert (const char * name_func, const int numb, const char * name_list);
