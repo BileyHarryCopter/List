@@ -1,5 +1,5 @@
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-            //  incapsulate an initialization of the structer //
+            //  incapsulation an initialization of the structer //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 struct List_t {
   data_t       *data;
