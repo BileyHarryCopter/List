@@ -1,5 +1,9 @@
 #include "list.h"
+#include "../log/log.h"
 #include "../includes/init.h"
+#include "../includes/err_ass.h"
+
+static const char Logfile[20] = "../log/Logfile";
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
                     //    functions for sirvicing of List   //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
@@ -42,15 +46,9 @@ int ListDtor (List_t *list)
 int LogToPhys (List_t *list, int log_pos)
 {
     assert (list);
+    logassert (log_pos < list->insertion, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list->name);
+
     int phys = 0;
-
-    if (log_pos >= list->insertion)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-
     for (int i = 0; i < log_pos; i++)
     {
         phys = list->next[phys];
@@ -62,15 +60,9 @@ int LogToPhys (List_t *list, int log_pos)
 int PhysToLog (List_t *list, int phys_pos)
 {
     assert (list);
+    logassert (list->prev[phys_pos] != -1, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list->name);
+
     int pos, log = 0;
-
-    if (list->prev[phys_pos] == -1)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-
     pos = phys_pos;
     while (list->prev[pos] != 0)
     {
@@ -103,24 +95,11 @@ int ListResup (List_t *list)
 int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val)
 {
     assert (list);
-
-    if (insrt_ptr >= list->capacity)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-    if (list->prev[insrt_ptr] == -1)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
+    logassert (insrt_ptr < list->capacity && list->prev[insrt_ptr] != -1,
+               Logfile, __PRETTY_FUNCTION__, INSERT_ERROR, list->name);
 
     if ((list->insertion) > CRIT_KOEF * (list->capacity))
-    {
         ListResup (list);
-    }
 
     assert (list);
 
@@ -151,31 +130,12 @@ int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val)
 int ListDelete (List_t *list, int del_ptr)
 {
     assert (list);
-
-    if (del_ptr >= list->capacity)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-    if (list->prev[del_ptr] == -1)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-    if (list->insertion == 0)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
-    if (del_ptr == 0)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
+    logassert (del_ptr < list->capacity && list->prev[del_ptr] != -1,
+               Logfile, __PRETTY_FUNCTION__, DELETE_UNEXISTED, list->name);
+    logassert (list->insertion != 0,
+               Logfile, __PRETTY_FUNCTION__, DELETE_EMPTY, list->name);
+    logassert (del_ptr != 0,
+               Logfile, __PRETTY_FUNCTION__, DELETE_FICT, list->name);
 
     list->data[del_ptr]             = 0;
     list->next[list->prev[del_ptr]] = list->next[del_ptr];
@@ -209,17 +169,13 @@ void ListPrint (List_t list)
 int ListLinearisation (List_t *list)
 {
     assert (list);
+    logassert (list->insertion != 0,
+               Logfile, __PRETTY_FUNCTION__, LINEAR_ERROR, list->name);
+
     int first = 0;
     int second = 0;
     int insert = list->insertion;
     data_t * new_mass = (data_t *) calloc (list->capacity, sizeof (data_t));
-
-    if (list->insertion == 0)
-    {
-    //  ADD errors checking
-    //  soft allertion about this error with message in terminal to checkout the logfile
-        return ERROR;
-    }
 
     first = list->next[first];
     for (int i = 0; i < insert; i++)
