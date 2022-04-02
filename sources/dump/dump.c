@@ -1,15 +1,13 @@
-#include "../list/list.h"
-#include "../includes/init.h"
-
+#include "dump.h"
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
                         //  REALISATION OF DUMPING  //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 
 //TODO: add a mode of разрешения выводимого файла
 
-char * SystemDump (List_t *list, char * name_file)
+char * SystemDot (List_t *list, char *name_file)
 {
-    char * Fname = (char *) calloc (FLEXSIZE, sizeof (char));
+    char *Fname = (char *) calloc (FLEXSIZE, sizeof (char));
     strcat (Fname, "dot ");
     strcat (Fname, name_file);
     strcat (Fname, " -T png -o sources/dump/");
@@ -17,6 +15,15 @@ char * SystemDump (List_t *list, char * name_file)
     strcat (Fname, "_dump.png");
 
     return Fname;
+}
+
+char * SystemOpen (List_t *list)
+{
+    char *Oname = (char *) calloc (FLEXSIZE, sizeof(char));
+    strcat (Oname, "open sources/dump/");
+    strcat (Oname, list->name);
+    strcat (Oname, "_dump.png");
+    return Oname;
 }
 
 int GraphDump (List_t *list)
@@ -31,7 +38,7 @@ int GraphDump (List_t *list)
     FILE * file = fopen (name_file, "w");
     assert (file);
     if (file == NULL)
-        return DAMP_ERROR;
+        return DUMP_ERROR;
 
 //  hard damping
     fseek (file, 0L, SEEK_SET);
@@ -104,12 +111,15 @@ int GraphDump (List_t *list)
 
 // TODO: nothing works
 // why???
-    char * comdump = SystemDump (list, name_file);
-    printf ("FILE NAME: %s\n", comdump);
-    //  system (comdump);
-    free (comdump);
-
-
     fclose (file);
+
+//  invocation a dump.png with function "system (const char *)"
+    char * commdump = SystemDot (list, name_file);
+    char * opendump = SystemOpen (list);
+    system (commdump);
+    system (opendump);
+    free (commdump);
+    free (opendump);
+
     return NO_ERROR;
 }

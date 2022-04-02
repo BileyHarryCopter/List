@@ -12,7 +12,7 @@ digraph LIST
 			l_elem_2 [label = "<name> NODE: 2 | <next> NEXT: 3 | <prev> PREV: 1 | <data> DATA: 30.00"];
 			l_elem_3 [label = "<name> NODE: 3 | <next> NEXT: 4 | <prev> PREV: 2 | <data> DATA: 40.00"];
 			l_elem_4 [label = "<name> NODE: 4 | <next> NEXT: 5 | <prev> PREV: 3 | <data> DATA: 60.00"];
-			l_elem_5 [label = "<name> NODE: 5 | <next> NEXT: 0 | <prev> PREV: 4 | <data> DATA: 860.00"];
+			l_elem_5 [label = "<name> NODE: 5 | <next> NEXT: 0 | <prev> PREV: 4 | <data> DATA: 86.00"];
 			l_elem_6 [label = "<name> NODE: 6 | <next> NEXT: 7 | <prev> PREV: -1 | <data> DATA: 0.00"];
 			l_elem_7 [label = "<name> NODE: 7 | <next> NEXT: 8 | <prev> PREV: -1 | <data> DATA: 0.00"];
 			l_elem_8 [label = "<name> NODE: 8 | <next> NEXT: 9 | <prev> PREV: -1 | <data> DATA: 0.00"];
