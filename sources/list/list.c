@@ -6,7 +6,7 @@
 List_t *ListCtor (char * list_name)
 {
     assert (list_name);
-    List_t *list ma   = (List_t *) calloc (1, sizeof (List_t));
+    List_t *list    = (List_t *) calloc (1, sizeof (List_t));
     list->data      = (data_t *) calloc (INITSIZE, sizeof (data_t));
     list->next      = (int *)    calloc (INITSIZE, sizeof (int));
     list->prev      = (int *)    calloc (INITSIZE, sizeof (int));

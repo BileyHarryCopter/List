@@ -7,22 +7,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 
 #define INITSIZE  10
 #define CRIT_KOEF 0.6
 #define INCR_KOEF 2
 #define FLEXSIZE 1000
 
-enum errors {
-  NO_ERROR = 0,
-  ERROR,
-  DAMP_ERROR
+enum numberrors
+{
+    NO_ERROR = 0,
+    ERROR,
+    NULL_PTR_ERROR,
+    INSERT_ERROR,
+    LINEAR_ERROR,
+    DELETE_ERROR,
+    EMPTY_ERROR,
+    DUMP_ERROR,
+    NUMBER_OF_ERROR
 };
 
-enum modes {
-  NEXT = 1,
-  PREV,
-  JUST
+enum modes
+{
+    NEXT = 1,
+    PREV,
+    JUST
 };
 
 enum sizes {
