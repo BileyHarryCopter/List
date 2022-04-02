@@ -11,6 +11,8 @@ int main (void)
     ListInsrt(list_1, NEXT, 3, 60);
     ListInsrt(list_1, NEXT, 4, 86);
 
+    ListDelete(list_1, 0);
+
     //  ListInsrt(&list_1, NEXT, 7, 13260);
 
     ListLinearisation (list_1);

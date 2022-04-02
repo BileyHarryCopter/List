@@ -1,0 +1,4 @@
+Name of the list: list_1
+Called  function: int ListDelete(List_t *, int)
+Number of  error: 6
+Reason of  error: trying to delete a fictive element from the list
