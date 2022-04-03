@@ -1,7 +1,7 @@
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
             //  initialization of whole errors-constant //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-static enum numberrors
+enum numberrors
 {
     NO_ERROR = 0,
     ERROR,
@@ -21,7 +21,7 @@ typedef struct namerrors
     char * names [NUMBER_OF_ERROR];
 } namerrors;
 
-static namerrors ERROR_NAMES =
+namerrors ERROR_NAMES =
 {
     "NO_ERROR",
     "ERROR",

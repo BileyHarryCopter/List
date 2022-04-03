@@ -1,10 +1,11 @@
 #include "dump.h"
+#include "../includes/init.h"
 #include "../includes/err_ass.h"
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
                         //  REALISATION OF DUMPING  //
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 
-//TODO: add a mode of разрешения выводимого файла
+//  TODO: add a mode of разрешения выводимого файла
 
 char * SystemDot (List_t *list, char *name_file)
 {
