@@ -1,16 +1,18 @@
 #include "log.h"
-#include "../includes/err_ass.h"
 
-int LogAssert (const char * name_func, const int numb, const char * name_list)
+#include "../includes/err_ass.h"
+#include "../includes/init.h"
+
+int LogAssert (const char * name_func, const int numb, List_t *list)
 {
     printf ("There are some errors in the program... Check the \"Logfile\" in the directory \"sources/log/\"\n");
-    LogDump (name_func, numb, name_list);
+    LogDump (name_func, numb, list);
     return ERROR;
 }
 
-int LogDump (const char * name_func, const int numb, const char * name_list)
+int LogDump (const char * name_func, const int numb, List_t *list)
 {
-    FILE * logfile = fopen ("Logfile", "w");
+    FILE * logfile = fopen ("sources/log/Logfile", "w");
     assert (logfile);
     fseek (logfile, 0L, SEEK_SET);
 
@@ -23,7 +25,7 @@ int LogDump (const char * name_func, const int numb, const char * name_list)
         return NULL_PTR_ERROR;
     }
 
-    fprintf (logfile, "Name of the list: %s\n", name_list);
+    fprintf (logfile, "Name of the list: %s\n", list->name);
     fprintf (logfile, "Called  function: %s\n", name_func);
 
     switch (numb)

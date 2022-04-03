@@ -1,19 +1,22 @@
 #ifndef LOG
 #define LOG
 
+#include "../list/list.h"
 #include "../includes/standarts.h"
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-#define logassert(express, file, func, numb_error, name_list)                  \
+#define logassert(express, file, func, numb_error, list)                       \
 {                                                                              \
     if (!(express))                                                            \
     {                                                                          \
-        return LogAssert (func, numb_error, name_list);                        \
+        LogAssert (func, numb_error, list);                                    \
+        ListDtor (list);                                                       \
+        exit (EXIT_FAILURE);                                                   \
     }                                                                          \
 }
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
-int LogDump   (const char * name_func, const int numb, const char * name_list);
-int LogAssert (const char * name_func, const int numb, const char * name_list);
+int LogDump   (const char * name_func, const int numb, struct List_t *list);
+int LogAssert (const char * name_func, const int numb, struct List_t *list);
 
 #endif
