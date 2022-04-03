@@ -1,3 +1,6 @@
+#ifndef LOG
+#define LOG
+
 #include "../includes/standarts.h"
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
@@ -12,3 +15,5 @@
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 int LogDump   (const char * name_func, const int numb, const char * name_list);
 int LogAssert (const char * name_func, const int numb, const char * name_list);
+
+#endif
