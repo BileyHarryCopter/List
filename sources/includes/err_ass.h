@@ -24,7 +24,7 @@ typedef struct namerrors
     char * names [NUMBER_OF_ERROR];
 } namerrors;
 
-namerrors ERROR_NAMES =
+static namerrors ERROR_NAMES =
 {
     "NO_ERROR",
     "ERROR",
