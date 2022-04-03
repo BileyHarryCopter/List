@@ -1,3 +1,6 @@
+#ifndef LIST
+#define LIST
+
 #include "../includes/standarts.h"
 
 #define INITSIZE  10
@@ -31,3 +34,5 @@ int ListLinearisation (List_t *list);
 void ListPrint        (List_t list);
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
 //===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*===*//
+
+#endif

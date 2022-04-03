@@ -39,6 +39,7 @@ int ListDtor (List_t *list)
     free (list->data);
     free (list->next);
     free (list->prev);
+    free (list);
     return NO_ERROR;
 }
 
@@ -46,7 +47,7 @@ int ListDtor (List_t *list)
 int LogToPhys (List_t *list, int log_pos)
 {
     assert (list);
-    logassert (log_pos < list->insertion, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list->name);
+    logassert (log_pos < list->insertion, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list);
 
     int phys = 0;
     for (int i = 0; i < log_pos; i++)
@@ -60,7 +61,7 @@ int LogToPhys (List_t *list, int log_pos)
 int PhysToLog (List_t *list, int phys_pos)
 {
     assert (list);
-    logassert (list->prev[phys_pos] != -1, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list->name);
+    logassert (list->prev[phys_pos] != -1, Logfile, __PRETTY_FUNCTION__, FIND_UNEXISTED, list);
 
     int pos, log = 0;
     pos = phys_pos;
@@ -96,7 +97,7 @@ int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val)
 {
     assert (list);
     logassert (insrt_ptr < list->capacity && list->prev[insrt_ptr] != -1,
-               Logfile, __PRETTY_FUNCTION__, INSERT_ERROR, list->name);
+               Logfile, __PRETTY_FUNCTION__, INSERT_ERROR, list);
 
     if ((list->insertion) > CRIT_KOEF * (list->capacity))
         ListResup (list);
@@ -131,11 +132,11 @@ int ListDelete (List_t *list, int del_ptr)
 {
     assert (list);
     logassert (del_ptr < list->capacity && list->prev[del_ptr] != -1,
-               Logfile, __PRETTY_FUNCTION__, DELETE_UNEXISTED, list->name);
+               Logfile, __PRETTY_FUNCTION__, DELETE_UNEXISTED, list);
     logassert (list->insertion != 0,
-               Logfile, __PRETTY_FUNCTION__, DELETE_EMPTY, list->name);
+               Logfile, __PRETTY_FUNCTION__, DELETE_EMPTY, list);
     logassert (del_ptr != 0,
-               Logfile, __PRETTY_FUNCTION__, DELETE_FICT, list->name);
+               Logfile, __PRETTY_FUNCTION__, DELETE_FICT, list);
 
     list->data[del_ptr]             = 0;
     list->next[list->prev[del_ptr]] = list->next[del_ptr];
@@ -170,7 +171,7 @@ int ListLinearisation (List_t *list)
 {
     assert (list);
     logassert (list->insertion != 0,
-               Logfile, __PRETTY_FUNCTION__, LINEAR_ERROR, list->name);
+               Logfile, __PRETTY_FUNCTION__, LINEAR_ERROR, list);
 
     int first = 0;
     int second = 0;
