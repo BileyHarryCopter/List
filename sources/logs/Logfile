@@ -1,0 +1,4 @@
+Name of the list: list_2
+Called  function: int ListLinearisation(List_t *)
+Number of  error: 7
+Reason of  error: trying to linearizate an empty list
