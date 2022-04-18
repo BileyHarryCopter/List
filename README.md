@@ -51,11 +51,11 @@ This procedure is needed for more safe working with the structure. Because of th
 
 1. For creation a new list use **ListCtor (<name of a list>)**:
 
-    List_t *ListCtor (char * list_name);
+        List_t *ListCtor (char * list_name);
 
 2. For removal the list use **ListDtor (<list>)**:
 
-    int ListDtor (List_t *list);
+        int ListDtor (List_t *list);
 
 3. For receiving number of element in any order use functions:
 
