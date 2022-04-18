@@ -23,8 +23,10 @@ List is a such data structure which has next features:
 
 1. Clone this repository into your local directory with command:
 
-for SSH:
-    git clone git@github.com:BileyHarryCopter/List.git
+    for SSH:
 
-for HTTP:
-    git clone https://github.com/BileyHarryCopter/List.git
+        git clone git@github.com:BileyHarryCopter/List.git
+
+    for HTTP:
+        
+        git clone https://github.com/BileyHarryCopter/List.git
