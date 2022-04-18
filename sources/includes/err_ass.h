@@ -33,7 +33,7 @@ static namerrors ERROR_NAMES =
     "trying to delete an unexisted element",
     "trying to delete an element from empty list",
     "trying to delete a fictive element from the list",
-    "truing to linearizate an empty list",
+    "trying to linearizate an empty list",
     "trying to find a number of unexisted element",
     "problem with openning a dot file"
 };

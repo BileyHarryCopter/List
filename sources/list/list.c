@@ -1,5 +1,5 @@
 #include "list.h"
-#include "../log/log.h"
+#include "../myassert/log.h"
 #include "../includes/init.h"
 #include "../includes/err_ass.h"
 
