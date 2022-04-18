@@ -102,6 +102,6 @@ This procedure is needed for more safe working with the structure. Because of th
 
         int ListLinearisation (List_t *list);
 
-## Graph Dump of the list and API GraphVis ##
+##Graph Dump of the list and API GraphVis##
 
 1.
