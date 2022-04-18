@@ -28,5 +28,17 @@ List is a such data structure which has next features:
         git clone git@github.com:BileyHarryCopter/List.git
 
     for HTTP:
-        
+
         git clone https://github.com/BileyHarryCopter/List.git
+
+2. Go to the clonned repository with:
+
+        cd List
+
+    And launch compilation with make:
+
+        make
+
+3. After these steps you'll receive file **./start** which you need to launch the program:
+
+    ./start
