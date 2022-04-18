@@ -73,8 +73,20 @@ This procedure is needed for more safe working with the structure. Because of th
 
     with several modes:
 
-        4.1. Modes **NEXT** or **JUST** - insert after transmitted number of position.
+    4.1. Modes **NEXT** or **JUST** - insert after transmitted number of position.
 
-        4.2. Mode **PREV** - insert before transmitted number of position.
+    4.2. Mode **PREV** - insert before transmitted number of position.
 
-5. 
+5. For delete an element from the list use `ListDelete`:
+
+        int ListDelete (List_t *list, int del_ptr);
+
+6. For creation of text dumping of the list use function `ListPrint`:
+
+        void ListPrint (List_t list);
+
+7. For creation of graph (to configure the necessary API[^1][https://habr.com/ru/post/464261/] read more) dumping of the list use function `GraphDump`:
+
+        int GraphDump (List_t *list);
+
+8. 
