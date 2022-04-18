@@ -87,7 +87,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
 7. For creation of graph (to configure the necessary API read [more](#graph-dump-of-the-list-and-api-graphvis)) dumping of the list use function `GraphDump`:
 
-        int GraphDump (List_t *list);
+        ``int GraphDump (List_t *list);``
 
 8. For linearization of the list use function `ListLinearisation`:
 
