@@ -16,4 +16,5 @@ List is a such data structure which has next features:
 3. Finding an element in the list has asymptotics
 
     3.1. **o(N)** in common case, where N - number of elements of the list.
+    
     3.2. **o(1)** in case with linearizated list.
