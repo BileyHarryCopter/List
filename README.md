@@ -41,4 +41,12 @@ List is a such data structure which has next features:
 
 3. After these steps you'll receive file **./start** which you need to launch the program:
 
-    ./start
+        ./start
+
+## Short command list ##
+
+In this project I use incapsulation of *initialization* the structure due to hide fields of the list from user.
+
+This procedure is needed for more safe working with structure. Because of these principles user has folowing **command list**:
+
+1.
