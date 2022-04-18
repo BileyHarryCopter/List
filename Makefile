@@ -2,7 +2,7 @@ CC=gcc
 CFLAGS=-c #-Wall # -Werror -Wextra
 LISTSRC= sources/list
 DUMPSRC= sources/dump
-LOGSRC = sources/log
+LOGSRC = sources/myassert
 
 all: start clean
 
