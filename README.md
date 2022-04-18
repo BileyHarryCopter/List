@@ -1,12 +1,3 @@
-<style>
-
-mark
-{
-    color:red;
-}
-
-</style>
-
 # List #
 
 ## Short description ##
@@ -104,4 +95,24 @@ This procedure is needed for more safe working with the structure. Because of th
 
 ## Graph Dump of the list and API GraphVis ##
 
-1.
+For using **GraphVis** you should set this API on your computer. This [link](https://graphviz.org/) helps you to set *dot*.
+
+## Examples and logs ##
+
+Demonstration of linearisation of the list:
+
+    1. There is a list without linearization procedure:
+
+        ![Without linearization](sources/logs/list_1_dump.png)
+
+    2. There is a list with linearization procedure:
+
+        ![With linearization](sources/logs/list_2_dump.png)
+
+Also sometime you can see similar messages in the terminal:
+
+    ![Appearance of error](sources/logs/appear_error.png)
+
+And you'll see in the **Logfile** message about the error:
+
+    ![Error](sources/logs/error.png)
