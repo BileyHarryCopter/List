@@ -53,7 +53,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         List_t *ListCtor (char * list_name);
 
-2. For removal the list use **ListDtor (<list>)**:
+2. For removal the list use `ListDtor (<list>)`:
 
         int ListDtor (List_t *list);
 
@@ -67,12 +67,14 @@ This procedure is needed for more safe working with the structure. Because of th
 
         int LogToPhys (List_t *list, int log_pos);
 
-4. For inserting data in the list use **ListInsrt**:
+4. For inserting data in the list use `ListInsrt`:
 
     int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
 
     with several modes:
 
-        Modes **NEXT** or **JUST** - insert after transmitted number of position.
+        4.1. Modes **NEXT** or **JUST** - insert after transmitted number of position.
 
-        Mode **PREV** - insert before transmitted number of position.
+        4.2. Mode **PREV** - insert before transmitted number of position.
+
+5. 
