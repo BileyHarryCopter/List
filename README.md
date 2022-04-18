@@ -40,7 +40,7 @@ List is a such data structure which has next features:
 
         git clone https://github.com/BileyHarryCopter/List.git
 
-2. Go to the clonned repository with:
+2. Go to the clonned repository with [check](##graph-dump-of-the-list-and-api-graphvis##):
 
         cd List
 
