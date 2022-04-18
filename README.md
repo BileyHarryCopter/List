@@ -40,7 +40,7 @@ List is a such data structure which has next features:
 
         git clone https://github.com/BileyHarryCopter/List.git
 
-2. Go to the clonned repository with [check](##graph-dump-of-the-list-and-api-graphvis##):
+2. Go to the clonned repository with:
 
         cd List
 
@@ -94,7 +94,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         void ListPrint (List_t list);
 
-7. For creation of graph (to configure the necessary API read [more](##graph-dump-of-the-list-and-api-graphvis##)) dumping of the list use function `GraphDump`:
+7. For creation of graph (to configure the necessary API read [more](#graph-dump-of-the-list-and-api-graphvis)) dumping of the list use function `GraphDump`:
 
         int GraphDump (List_t *list);
 
