@@ -78,7 +78,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
 4. For inserting data in the list use `ListInsrt`:
 
-    int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
+        int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
 
     with several modes:
 
