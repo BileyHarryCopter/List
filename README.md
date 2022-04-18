@@ -94,7 +94,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         void ListPrint (List_t list);
 
-7. For creation of graph (to configure the necessary API read [more](https://github.com/BileyHarryCopter/List/README.md/)) dumping of the list use function `GraphDump`:
+7. For creation of graph (to configure the necessary API read [more](https://github.com/BileyHarryCopter/List/README.md)) dumping of the list use function `GraphDump`:
 
         int GraphDump (List_t *list);
 
