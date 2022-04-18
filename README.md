@@ -103,7 +103,7 @@ Demonstration of linearisation of the list:
 
     1. There is a list without linearization procedure:
 
-        ![Without linearization](sources/logs/list_1_dump.png)
+        ![Without linearization](/sources/logs/list_1_dump.png)
 
     2. There is a list with linearization procedure:
 
