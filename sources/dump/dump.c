@@ -12,7 +12,7 @@ char * SystemDot (List_t *list, char *name_file)
     char *Fname = (char *) calloc (FLEXSIZE, sizeof (char));
     strcat (Fname, "dot ");
     strcat (Fname, name_file);
-    strcat (Fname, " -T png -o sources/dump/");
+    strcat (Fname, " -T png -o sources/logs/");
     strcat (Fname, list->name);
     strcat (Fname, "_dump.png");
 
@@ -22,7 +22,7 @@ char * SystemDot (List_t *list, char *name_file)
 char * SystemOpen (List_t *list)
 {
     char *Oname = (char *) calloc (FLEXSIZE, sizeof(char));
-    strcat (Oname, "open sources/dump/");
+    strcat (Oname, "open sources/logs/");
     strcat (Oname, list->name);
     strcat (Oname, "_dump.png");
     return Oname;
@@ -32,7 +32,7 @@ int GraphDump (List_t *list)
 {
     assert (list->name);
     char *name_file = (char *)calloc (2*NAMESIZE, sizeof (char));
-    strcpy (name_file, "sources/dump/");
+    strcpy (name_file, "sources/logs/");
     strcat (name_file, list->name);
     strcat (name_file, "_dump.dot");
     assert (name_file);
@@ -89,7 +89,7 @@ int GraphDump (List_t *list)
         }
     }
 
-    fprintf (file, "\t\t}\n\n");
+    fprintf (file, "\t}\n\n");
 
     fprintf (file,
             "\tsubgraph MAIN\n"

@@ -12,7 +12,8 @@ int main (void)
     ListInsrt(list_1, NEXT, 4, 86);
     ListInsrt(list_1, PREV, 0, 1414);
     ListInsrt(list_1, NEXT, 3, -12334);
-
+    ListDelete (list_1, 4);
+    ListInsrt (list_1, NEXT, 1, 1213);
 
     //  GraphDump (list_1);
     ListLinearisation (list_1);
