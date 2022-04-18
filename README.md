@@ -47,6 +47,32 @@ List is a such data structure which has next features:
 
 In this project I use incapsulation of *initialization* the structure due to hide fields of the list from user.
 
-This procedure is needed for more safe working with structure. Because of these principles user has folowing **command list**:
+This procedure is needed for more safe working with the structure. Because of these principles user has folowing **command list**:
 
-1.
+1. For creation a new list use **ListCtor (<name of a list>)**:
+
+    List_t *ListCtor (char * list_name);
+
+2. For removal the list use **ListDtor (<list>)**:
+
+    int ListDtor (List_t *list);
+
+3. For receiving number of element in any order use functions:
+
+    3.1. In logical order from physical number:
+
+        int PhysToLog (List_t *list, int phys_pos);
+
+    3.2. In physical order from logical number:
+
+        int LogToPhys (List_t *list, int log_pos);
+
+4. For inserting data in the list use **ListInsrt**:
+
+    int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
+
+    with several modes:
+
+        Modes **NEXT** or **JUST** - insert after transmitted number of position.
+
+        Mode **PREV** - insert before transmitted number of position.
