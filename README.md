@@ -49,9 +49,9 @@ In this project I use incapsulation of *initialization* the structure due to hid
 
 This procedure is needed for more safe working with the structure. Because of these principles user has folowing **command list**:
 
-1. For creation a new list use **ListCtor (<name of a list>)**:
+1. For creation a new list use `ListCtor (<name of a list>)`:
 
-        <span style = "color:blue">List_t</span> *ListCtor (char * list_name);
+        List_t *ListCtor (char * list_name);
 
 2. For removal the list use **ListDtor (<list>)**:
 
