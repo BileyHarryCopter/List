@@ -80,7 +80,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
 
-    with several modes:
+    with folowing modes:
 
     4.1. Modes **NEXT** or **JUST** - insert after transmitted number of position.
 
@@ -94,7 +94,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         void ListPrint (List_t list);
 
-7. For creation of graph (to configure the necessary API read [more](https://github.com/BileyHarryCopter/List/README.md)) dumping of the list use function `GraphDump`:
+7. For creation of graph (to configure the necessary API read [more](## graph-dump-of-the-list-and-api-graphvis)) dumping of the list use function `GraphDump`:
 
         int GraphDump (List_t *list);
 
