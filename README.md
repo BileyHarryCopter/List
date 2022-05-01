@@ -99,16 +99,16 @@ Demonstration of linearisation of the list:
 
 1. There is a list without linearization procedure:
 
-![Without linearization](https://github.com/BileyHarryCopter/List/blob/main/sources/logs/list_1_dump.png)
+![Without linearization](https://github.com/BileyHarryCopter/List/blob/main/logs/list_1_dump.png)
 
 2. There is a list with linearization procedure:
 
-![With linearization](https://github.com/BileyHarryCopter/List/blob/main/sources/logs/list_2_dump.png)
+![With linearization](https://github.com/BileyHarryCopter/List/blob/main/logs/list_2_dump.png)
 
 Also sometime you can see similar messages in the terminal:
 
-![Appearance of error](https://github.com/BileyHarryCopter/List/blob/main/sources/logs/appear_error.png)
+![Appearance of error](https://github.com/BileyHarryCopter/List/blob/main/logs/appear_error.png)
 
 And you'll see in the **Logfile** message about the error:
 
-![Error](https://github.com/BileyHarryCopter/List/blob/main/sources/logs/error.png)
+![Error](https://github.com/BileyHarryCopter/List/blob/main/logs/error.png)
