@@ -1,4 +1,4 @@
-Name of the list: list_1
-Called  function: int ListInsrt(List_t *, int, int, data_t)
-Number of  error: 3
-Reason of  error: trying to insert around unexisted element
+Name of the list: list_2
+Called  function: int ListDelete(List_t *, int)
+Number of  error: 4
+Reason of  error: trying to delete an unexisted element
