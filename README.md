@@ -43,7 +43,7 @@ List is a such data structure which has next features:
 
 In this project I use incapsulation of *initialization* the structure due to hide fields of the list from user.
 
-This procedure is needed for more safe working with the structure. Because of these principles user has folowing **command list**:
+This procedure is needed for more safe working with the structure. Because of these principles user has following **command list**:
 
 1. For creation a new list use `ListCtor (<name of a list>)`:
 
@@ -67,7 +67,7 @@ This procedure is needed for more safe working with the structure. Because of th
 
         int ListInsrt (List_t *list, int mode, int insrt_ptr, data_t insrt_val);
 
-    with folowing modes:
+    with following modes:
 
     4.1. Modes **NEXT** or **JUST** - insert after transmitted number of position.
 

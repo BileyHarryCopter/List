@@ -1,31 +1,37 @@
-CC=gcc
-CFLAGS=-c #-Wall # -Werror -Wextra
-LISTSRC= sources/list
-DUMPSRC= sources/dump
-LOGSRC = sources/myassert
+C = gcc
+CFLAGS = -O2 --std=c18 -Wall # -Werror -Wextra
+# src directories
+SRCDIR  = sources
+LISTDIR = $(SRCDIR)/list
+DUMPDIR = $(SRCDIR)/dump
+LOGDIR  = $(SRCDIR)/myassert
+# h files
+INCLUDE = -I./$(LISTDIR) -I./$(DUMPDIR) -I./$(LOGDIR) -I./includes
 
-all: start clean
+# c files
+SRC  = $(LISTDIR)/list.c $(DUMPDIR)/dump.c $(LOGDIR)/log.c main.c
+OBJS = $(SRC:.c=.o)
+DEPS = $(SRC:.c=.d)
 
-start: list.o dump.o log.o main.o
-	$(CC) list.o dump.o log.o main.o -o start
+# concat path to h files to flags
+CFLAGS += $(INCLUDE)
 
-list.o:
-	$(CC) $(CFLAGS) $(LISTSRC)/list.c
+.PHONY: all
+all:
+	@echo "Compling..."
+	@$(C) $(CFLAGS) $(SRC) -o start
 
-dump.o:
-	$(CC) $(CFLAGS) $(DUMPSRC)/dump.c
-
-log.o:
-	$(CC) $(CFLAGS) $(LOGSRC)/log.c
-
-main.o:
-	$(CC) $(CFLAGS) main.c
-
+.PHONY: run	
 run:
-	./start
+	@echo "Running the programm..."
+	@./start
 
+.PHONY: leaks
 leaks:
-	leaks -atExit -- ./start
+	@echo "Running the program with mode of memleaks finding..."
+	@leaks -atExit -- ./start
 
+.PHONY: clean
 clean:
-	rm -rf *.o
+	@echo "Cleaning..."
+	@rm -rf *.o
